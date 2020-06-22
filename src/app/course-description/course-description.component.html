@@ -1,0 +1,58 @@
+<div class="course">
+    <img src="assets/img/backend-for-article-2.jpg" alt="SomeDescription">
+    <div class="course-data-wrapper">
+        <h3>{{ course.courseTitle }}</h3>
+        <h4 id="autor"> {{ course.userAdmin.fullName }} {{ course.userAdmin.lastName }} </h4>
+            <p>{{ course.description }}</p>
+        <span class="rating"><i class="far fa-smile"></i>100%</span>
+        <span class="students"><i class="fas fa-user-graduate"></i>999</span>
+    </div>
+    <button id="sign-up-course" class="btn-primary">Inscribirte</button>
+</div>
+<div class="subjects">
+    <h2>Lo que aprenderas</h2>
+    <ul>
+        <li *ngFor="let topic of course.topics"> {{topic.topicTitle}}</li>
+    </ul>
+</div>
+<div class="details">
+    <h3>Detalles</h3>
+    <div class="detail">
+        <i class="far fa-clock"></i>
+        <div class="detail-wrapper">
+            <span>Duración</span>
+            <div>{{course.hourLenght }} horas</div>
+        </div>
+    </div>
+    <div class="detail">
+        <i class="fas fa-language"></i>
+        <div class="detail-wrapper">
+            <span>Idioma</span>
+            <div>Español</div>
+        </div>
+    </div>
+    <div class="detail">
+        <i class="fas fa-signal"></i>
+        <div class="detail-wrapper">
+            <span>Dificultad</span>
+            <div>{{ course.level }} </div>
+        </div>
+    </div>
+</div>
+<div class="comments">
+    <h3>Comentarios</h3>
+    <div class="comment">
+        <div class="user-wrapper">
+            <div class="img-user"></div>
+            <span>Lorem ipsum dolor sit.</span>
+        </div>
+        <div class="review">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
+                voluptatibus fugiat laborum libero reprehenderit dolorum dolorem,
+                cum magni nostrum temporibus quidem eum quasi sint expedita.
+            </p>
+            <span><i class="far fa-smile"></i>100%</span>
+        </div>
+    </div>
+</div>

@@ -1,24 +1,8 @@
+.login-container{
+    width: 95%;
+    margin: 0 auto;
+}
+
 .login-box{
     margin-top: 50%;
-}
-
-.input-container{
-    background: #fff;
-    border: 1px solid #dfe1e5;
-    box-shadow: none;
-    border-radius: 24px;
-    margin: 0 auto;
-    margin-bottom: 3%;
-    padding: 1%;
-}
-
-input{
-    display: block;
-    margin: 0 auto;
-    border: none;
-    width: 95%;
-}
-
-.login-box>button{
-    padding: 2%;
 }

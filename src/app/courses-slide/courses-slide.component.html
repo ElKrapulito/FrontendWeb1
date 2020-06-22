@@ -1,0 +1,15 @@
+<div class="slide-wrapper">
+    <div class="slider">
+        <div class="slide" *ngFor="let course of courses">
+            <img src="assets/img/study.png" alt="SomeDescription">
+            <div class="slide-data-wrapper">
+                <h3>{{ course.courseTitle }}</h3>
+                <h4 id="autor">{{ course.userAdmin.fullName }} {{ course.userAdmin.lastName }} </h4>
+                <span class="rating"><i class="far fa-smile"></i>100%</span>
+                <span class="students"><i class="fas fa-user-graduate"></i>999</span>
+            </div>
+            <button class="btn-primary" routerLink="/courses/description/{{course.id}}">Ver mas</button>
+        </div>
+    </div>
+</div>
+

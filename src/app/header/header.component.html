@@ -1,16 +1,27 @@
 <div class="header">
-    <button id="btn-menu" class="btn-wrapper"><i class="fas fa-bars"></i></button>
-    <a href="index.html" id="title-header" class="">
+    <button (click)="toggleHideMenu()" id="btn-menu" class="btn-wrapper"><i class="fas fa-bars"></i></button>
+    <a routerLink="home" id="title-header" [class.hide]="isTitleHide">
         <h1>Proyecto Final</h1>
     </a>
-    <input type="text" name="search" class="input-text hide-input" placeholder="Buscar cursos">
-    <button id="btn-search" class="btn-wrapper"><i class="fas fa-search"></i></button>
-    <div class="menu-mobile hide">
+    <div class="search-box" [class.hide-input]="isHideInput">
+        <input #searchBox type="text" name="search" class="input-text" (input)="search(searchBox.value)"
+            placeholder="Buscar cursos">
+        <ul class="search-result">
+            <li *ngFor="let course of courses$ | async">
+                <a routerLink="courses/description/{{course.id}}">
+                    {{course.courseTitle}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <button id="btn-search" class="btn-wrapper" (click)="toggleHideInput()"><i class="fas fa-search"></i></button>
+    <div class="menu-mobile" [class.hide]="isHide">
         <div class="menu">
-            <button class="btn-primary"><a routerLink="course.html" class="courses">Cursos</a></button>
-            <button class="btn-secondary"><a routerLink="login.html">Ingresar</a></button>
-            <button class="btn-secondary">Registrarse</button>
+            <button class="btn-primary" (click)="toggleHideMenu()"><a routerLink="" class="courses">Cursos</a></button>
+            <button class="btn-secondary" (click)="toggleHideMenu()" routerLink="/login"><a>Ingresar</a></button>
+            <button class="btn-secondary" (click)="toggleHideMenu()" routerLink="/register"><a>Registrarse</a></button>
         </div>
-        <button class="btn-close-menu"></button>
+        <button class="btn-close-menu" (click)="toggleHideMenu()"></button>
     </div>
 </div>

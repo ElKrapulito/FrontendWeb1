@@ -1,0 +1,27 @@
+<div class="intro">
+    <h2>Lorem, ipsum dolor.</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, quaerat error cupiditate explicabo praesentium 
+        eveniet fugiat suscipit quod veritatis minus, possimus obcaecati quae maiores vel perspiciatis alias deleniti nam 
+        quibusdam?
+    </p>
+</div>
+<app-courses-slide></app-courses-slide>
+<div class="categories">
+    <h2>Categorias</h2>
+    <div class="category" *ngFor="let category of categories">
+        <a routerLink="/courses">
+            <img src="assets/img/logo-category.png" alt=""><span>{{ category.categoryName }}</span>
+        </a>
+    </div>
+</div>
+<div class="about">
+    <div class="details-about">
+        <h3>Instructores</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae assumenda sequi quasi aliquam obcaecati ex aliquid enim error excepturi temporibus.</p>
+    </div>
+    <div class="details-about">
+        <h3>Certificados</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae assumenda sequi quasi aliquam obcaecati ex aliquid enim error excepturi temporibus.</p>
+    </div>
+</div>

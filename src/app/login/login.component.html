@@ -1,10 +1,12 @@
-<div class="login-box">
-    <h2>Ingresar</h2>
-    <div class="username-wrapper input-container">
-        <input type="text" id="username" placeholder="E-mail">
+<div class="login-container">
+    <div class="login-box">
+        <h2>Ingresar</h2>
+        <div class="username-wrapper input-container">
+            <input #userName type="text" id="username" class="input" placeholder="E-mail">
+        </div>
+        <div class="pass-wrapper input-container">
+            <input #pass type="password" id="password" class="input" placeholder="Contraseña">
+        </div>
+        <button class="btn-secondary" id="btn-login" (click)="login(userName.value,pass.value)">Ingresar</button>
     </div>
-    <div class="pass-wrapper input-container">
-        <input type="password" id="password" placeholder="Contraseña">
-    </div>
-    <button class="btn-secondary" id="btn-login">Ingresar</button>
 </div>
