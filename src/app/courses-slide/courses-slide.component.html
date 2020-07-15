@@ -1,7 +1,7 @@
 <div class="slide-wrapper">
     <div class="slider">
         <div class="slide" *ngFor="let course of courses">
-            <img src="assets/img/study.png" alt="SomeDescription">
+            <img src="{{course.url}}" alt="{{course.courseTitle}} Logo">
             <div class="slide-data-wrapper">
                 <h3>{{ course.courseTitle }}</h3>
                 <h4 id="autor">{{ course.userAdmin.fullName }} {{ course.userAdmin.lastName }} </h4>

@@ -1,5 +1,8 @@
+<div *ngIf="isAdmin">
+    <app-course-form [course]="course"></app-course-form>
+</div>
 <div class="course">
-    <img src="assets/img/backend-for-article-2.jpg" alt="SomeDescription">
+    <img src="{{course.url}}" alt="SomeDescription">
     <div class="course-data-wrapper">
         <h3>{{ course.courseTitle }}</h3>
         <h4 id="autor"> {{ course.userAdmin.fullName }} {{ course.userAdmin.lastName }} </h4>
@@ -12,16 +15,17 @@
 <div class="subjects">
     <h2>Lo que aprenderas</h2>
     <ul>
-        <li *ngFor="let topic of course.topics"> {{topic.topicTitle}}</li>
+        <li *ngFor="let topic of course.topics"><a routerLink="/topic/{{topic.id}}">{{topic.topicTitle}}</a></li>
     </ul>
 </div>
+<app-topic-form *ngIf="isAdmin" [course]="course" (sendTopic)="addNewTopic($event)"></app-topic-form>
 <div class="details">
     <h3>Detalles</h3>
     <div class="detail">
         <i class="far fa-clock"></i>
         <div class="detail-wrapper">
             <span>Duración</span>
-            <div>{{course.hourLenght }} horas</div>
+            <div>{{course.hourLength }} horas</div>
         </div>
     </div>
     <div class="detail">

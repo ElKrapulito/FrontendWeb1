@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-courses',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-
-  constructor() { }
+  isAdmin:boolean
+  constructor(
+    private userService:UserService
+  ) { 
+    this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
+  }
 
   ngOnInit(): void {
   }

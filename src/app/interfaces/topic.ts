@@ -2,7 +2,7 @@ import { Course } from './course';
 import { User } from './user';
 
 export interface Topic{
-    id:number;
+    id?:number;
 
     topicTitle:string;
 
@@ -12,7 +12,7 @@ export interface Topic{
 
     content:string;
 
-    course:Course;
+    course?:Course;
     
-    users:User[];
+    users?:User[];
 }

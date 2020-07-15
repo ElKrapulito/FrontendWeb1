@@ -1,0 +1,12 @@
+<h3>{{topic.topicTitle}}</h3>
+<p>{{topic.description}}</p>
+
+<div *ngIf="topic.type=='Video'">
+    <iframe width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/2CE3yZKO_QA" 
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+</div>
+<p>{{topic.content}}</p>

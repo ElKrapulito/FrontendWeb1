@@ -6,6 +6,12 @@ body {
     color           : white;
 }
 
+a {
+    display        : block;
+    text-decoration: none;
+    color          : white;
+}
+
 .btn-secondary {
     display         : block;
     width           : 100%;
@@ -85,4 +91,11 @@ body {
     position  : absolute !important;
     top       : -9999px !important;
     left      : -9999px !important;
+}
+
+@media(min-width: 992px) {
+    .container {
+        width : 75%;
+        margin: 0 auto;
+    }
 }

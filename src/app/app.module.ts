@@ -12,6 +12,10 @@ import { CoursesSelectionComponent } from './courses-selection/courses-selection
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDescriptionComponent } from './course-description/course-description.component';
 import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CourseFormComponent } from './course-form/course-form.component';
+import { TopicComponent } from './topic/topic.component';
+import { TopicFormComponent } from './topic-form/topic-form.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,16 @@ import { RegisterComponent } from './register/register.component';
     CoursesComponent,
     CourseDescriptionComponent,
     RegisterComponent,
+    CourseFormComponent,
+    TopicComponent,
+    TopicFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

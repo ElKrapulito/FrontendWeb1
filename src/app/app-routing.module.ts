@@ -7,6 +7,7 @@ import { CourseDescriptionComponent } from './course-description/course-descript
 import { AuthGuard } from './auth/auth.guard';
 import { NoAuthGuard } from './auth/no-auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { TopicComponent } from './topic/topic.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'courses',component:CoursesComponent},
   {path:'courses/description/:id',component:CourseDescriptionComponent,canActivate:[AuthGuard]},
+  {path:'topic/:id',component:TopicComponent,canActivate:[AuthGuard]},
   {path:'', redirectTo:'home', pathMatch:'full'}
 ];
 

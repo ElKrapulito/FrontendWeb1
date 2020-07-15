@@ -1,0 +1,28 @@
+<button class="btn-secondary" (click)="isEdit = !isEdit" *ngIf="course">Editar Curso</button>
+<button class="btn-secondary" (click)="isEdit = !isEdit" *ngIf="!course">Insertar Curso</button>
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()" *ngIf="isEdit">
+    <h3>Titulo:</h3>
+    <div class="input-container"><input #title type="text" class="input" placeholder="Titulo" formControlName="courseTitle"/></div> <!--[(ngModel)]="course.courseTitle"-->
+    <h3>Descripcion:</h3>
+    <div class="input-container"><textarea class="input" placeholder="Descripcion" formControlName="description"></textarea></div> <!--[(ngModel)]="course.description"-->
+    <h3>Nivel:</h3>
+    <div class="input-container"><input type="text" class="input" placeholder="Nivel" formControlName="level"/></div> <!--[(ngModel)]="course.level"-->
+    <h3>Imagen:</h3>
+    <div class="imageWrapper">
+        <img id="uploadImage" src="#" alt="Image to be uploaded">
+    </div>
+    <div class="input-container"><input type="file" id="imageInput" #fileInput (change)="readURL(fileInput)" accept="image/*"/>
+    </div>
+    <h3>Horas:</h3>
+    <div class="input-container"><input type="number" class="input" placeholder="Horas" formControlName="hourLength"></div> <!--[(ngModel)]="course.hourLength"-->
+    <h3>Categoria:</h3>
+    <div formGroupName="categoriesIn">
+        <div *ngFor="let cat of categories">
+            <label for="{{cat.id}}">
+                <input type="radio" id="{{cat.id}}" value="{{cat.id}}" formControlName="category"/>
+                {{cat.categoryName}}
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn-secondary">Guardar</button>
+</form>

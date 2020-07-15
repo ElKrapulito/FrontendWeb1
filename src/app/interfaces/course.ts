@@ -4,7 +4,7 @@ import { Category } from './category';
 
 export interface Course{
     
-    id:number;
+    id?:number;
 
     courseTitle:String;
 
@@ -12,17 +12,21 @@ export interface Course{
 
     level:string;
 
-    imgUrl:string;
+    imgUrl?:string;
+
+    mimetype?:string;
     
-    hourLenght:number;
+    hourLength:number;
+
+    users?: User[];
     
-    users: User[];
-    
-    category: Category;
+    category?: Category;
 
     //subcategories:SubCategory[];
 
-    topics: Topic[];
+    topics?: Topic[];
 
-    userAdmin:User
+    userAdmin?:User
+
+    url?: string
 }

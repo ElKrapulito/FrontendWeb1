@@ -1,7 +1,9 @@
 import { Course } from './course';
 
 export interface User{
-    id: number;
+    sub?:number;
+
+    id?: number;
 
     fullName:string;
 
@@ -13,7 +15,7 @@ export interface User{
 
     admin:boolean
     
-    courses: Course[];
+    courses?: Course[];
     
-    coursesAdmin:Course[];
+    coursesAdmin?:Course[];
 }
