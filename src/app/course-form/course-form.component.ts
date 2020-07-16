@@ -50,13 +50,13 @@ export class CourseFormComponent implements OnInit {
       image.src = this.course.url;*/
     } else {
       this.courseForm = this.fb.group({
-        courseTitle: [''],
-        description: [''],
-        level: [''],
-        imgUrl: [],
-        hourLength: ['', Validators.pattern('[0-9]+')],
+        courseTitle: ['', Validators.required],
+        description: ['', Validators.required],
+        level: ['', Validators.required],
+        imgUrl: [Validators.required],
+        hourLength: ['', [Validators.pattern('[0-9]+'), Validators.required]],
         categoriesIn: this.fb.group({
-          category: ['']
+          category: ['', Validators.required]
         })
       });
     }
