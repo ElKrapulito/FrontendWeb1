@@ -5,7 +5,7 @@ import * as jwt_decode from 'jwt-decode';
 import { User } from '../interfaces/user';
 import { tap, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRouteSnapshot
+    private router: Router
   ) { }
 
   urlLogin = `${environment.apiUrl}/auth/login`;
@@ -30,7 +30,7 @@ export class UserService {
   logIn(user){
     return this.http.post<any>(this.urlLogin,user)
       .pipe(
-        tap(()=> {}),
+        tap(()=> {this.router.navigate(['/home'])}),
         catchError(this.handleError<any>('LogIn'))
       );
   }
@@ -50,7 +50,6 @@ export class UserService {
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      alert('usuario o contraseña equivocados!')
       return of(result as T);
     };
   }
