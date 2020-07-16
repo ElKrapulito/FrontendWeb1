@@ -18,9 +18,10 @@
     <button id="btn-search" class="btn-wrapper" (click)="toggleHideInput()"><i class="fas fa-search"></i></button>
     <div class="menu-mobile" [class.hide]="isHide">
         <div class="menu">
-            <button class="btn-primary" (click)="toggleHideMenu()"><a routerLink="" class="courses">Cursos</a></button>
+            <button class="btn-primary" (click)="toggleHideMenu()" routerLink="">Cursos</button>
             <button class="btn-secondary" (click)="toggleHideMenu()" routerLink="/login"><a>Ingresar</a></button>
             <button class="btn-secondary" (click)="toggleHideMenu()" routerLink="/register"><a>Registrarse</a></button>
+            <button class="btn-secondary" (click)="logOut()">Salir</button>
         </div>
         <button class="btn-close-menu" (click)="toggleHideMenu()"></button>
     </div>
