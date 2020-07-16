@@ -1,0 +1,13 @@
+.register-form{
+    background-color: #1e6f9b;
+    padding: 3%;
+}
+
+@media(min-width:992px){
+    .register-form{
+        margin: 0 auto;
+        width: 60%;
+        background-color: #1e6f9b;
+        padding: 3%;
+    }
+}

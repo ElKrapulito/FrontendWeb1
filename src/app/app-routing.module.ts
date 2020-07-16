@@ -11,6 +11,7 @@ import { TopicComponent } from './topic/topic.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
 import { DataResolveService } from './services/data-resolve.service';
 import { CourseResolverService } from './services/course-resolver.service';
+import { OneCourseResolverService } from './services/one-course-resolver.service';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent,canActivate:[NoAuthGuard]},
   {path:'home',component:HomeComponent},
   {path:'courses/category/:id',component:CoursesComponent, resolve:{courses: CourseResolverService}},
-  {path:'courses/description/:id',component:CourseDescriptionComponent,canActivate:[AuthGuard]},
+  {path:'courses/description/:id',component:CourseDescriptionComponent,canActivate:[AuthGuard], resolve:{course:OneCourseResolverService}},
   {path:'courses/description/:id/topic/create',component:TopicFormComponent,canActivate:[AuthGuard]},
   {path:'courses/description/:id/topic/:tid/edit',component:TopicFormComponent,canActivate:[AuthGuard], resolve:{topic: DataResolveService}},
   {path:'topic/:id',component:TopicComponent,canActivate:[AuthGuard]},

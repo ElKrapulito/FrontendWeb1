@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Course } from '../interfaces/course';
 import { TopicService } from '../services/topic.service';
 import { Topic } from '../interfaces/topic';
@@ -56,12 +56,12 @@ export class TopicFormComponent implements OnInit {
       this.setContent(this.topic.content);
     } else {
       this.topicForm = this.fb.group({
-        topicTitle: [''],
-        description: [''],
+        topicTitle: ['', Validators.required],
+        description: ['', Validators.required],
         types: this.fb.group({
-          type: ['']
+          type: ['', Validators.required]
         }),
-        content: ['']
+        content: ['', Validators.required]
       });
     }
   }
@@ -113,6 +113,10 @@ export class TopicFormComponent implements OnInit {
 
   setContent(content: string) {
     document.getElementById('content-preview').innerHTML = marked(content);
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 

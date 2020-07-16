@@ -22,6 +22,7 @@
     padding         : 3% 0;
     background-color: #9524ff80;
     border          : #9424ff 1px solid;
+    text-align: center;
 }
 
 .detail-wrapper {
@@ -71,4 +72,48 @@
     width  : 95%;
     margin : 0 auto;
     padding: 3% 0;
+}
+
+.subjects>h2 {
+    width : max-content;
+    margin: 30px auto;
+}
+
+.subjects>ul {
+    list-style: none;
+    padding   : 0;
+}
+
+.subjects>ul li {
+    margin-bottom   : 3%;
+    border          : 3px solid black;
+    padding         : 3%;
+    background-color: #9524ff80;
+    text-align      : center;
+}
+
+
+@media(min-width:992px) {
+    .course {
+        width : 40%;
+        margin: 0 auto;
+    }
+
+    .subjects>ul li {
+        padding      : 1%;
+        width        : 40%;
+        margin       : 0 auto;
+        margin-bottom: 1%;
+    }
+
+    .details>h3{
+        width: max-content;
+        margin: 30px auto;
+    }
+
+    .detail {
+        width  : 40%;
+        padding: 1% 0;
+        margin: 0 auto;
+    }
 }

@@ -51,6 +51,10 @@ export class UserService {
     return this.http.post<any>(`${this.url}/course`, { userId: user, courseId: course.id });
   }
 
+  getJoinCourses(id:number){
+    return this.http.get<User>(`${this.url}/${id}`);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

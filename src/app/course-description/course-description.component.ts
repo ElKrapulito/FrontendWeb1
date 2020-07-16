@@ -14,6 +14,8 @@ import { Topic } from '../interfaces/topic';
 export class CourseDescriptionComponent implements OnInit {
 
   isAdmin: boolean;
+  hasJoin:boolean;
+  course: Course;
 
   constructor(
     private courseService: CourseService,
@@ -22,21 +24,20 @@ export class CourseDescriptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCourse();
+    //this.getCourse();
+    this.course = this.route.snapshot.data.course;
     this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
+    this.compareCourse();
     window.scrollTo(0, 0);
   }
-
-  @Input() course: Course;
-
-  getCourse() {
+  /*getCourse() {
     const courseId = +this.route.snapshot.paramMap.get('id');
     this.courseService.getCourse(courseId)
       .subscribe(
         course =>
           this.course = course
       )
-  }
+  }*/
 
   addNewTopic(topic: Topic) {
     this.course.topics.push(topic);
@@ -46,8 +47,21 @@ export class CourseDescriptionComponent implements OnInit {
     const userId = this.userService.decode(sessionStorage.getItem('userInSession')).sub;
     this.userService.joinToCourse(userId, this.course)
       .subscribe(result => {
-        console.log(result);
+        //console.log(result);
+        this.hasJoin = true;
+        const courses = JSON.parse(sessionStorage.getItem('userCourses')) as Course[]
+        courses.push(this.course);
+        sessionStorage.setItem('userCourses',JSON.stringify(courses))
       });
+  }
+
+  compareCourse(){
+    const courses = JSON.parse(sessionStorage.getItem('userCourses')) as Course[];
+    if(courses.find(course => course.id == this.course.id)){
+      this.hasJoin = true;
+    } else {
+      this.hasJoin = false;
+    }
   }
 
 }

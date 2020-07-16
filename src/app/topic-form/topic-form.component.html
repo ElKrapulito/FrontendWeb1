@@ -28,5 +28,6 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn-secondary">Guardar tema</button>
+    <button type="submit" class="btn-secondary" [disabled]="!topicForm.valid">Guardar tema</button>
 </form>
+<button (click)="goBack()" class="btn-secondary">Cancelar</button>

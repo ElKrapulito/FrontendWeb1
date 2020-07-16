@@ -10,24 +10,15 @@ import { environment } from 'src/environments/environment';
 })
 export class CoursesSelectionComponent implements OnInit {
 
+
+  @Input() courses:Course[];
+
   constructor(
-    private http: HttpClient
+    
   ) { }
 
   ngOnInit(): void {
-    //this.getCourses();
-  }
 
-  url = `${environment.apiUrl}/course`;
-
-  @Input() courses:Course[]
-  getCourses(){
-    this.http.get<Course[]>(this.url)
-    .subscribe(
-      courses => {
-        this.courses = courses;
-      }
-    );
   }
 
 }

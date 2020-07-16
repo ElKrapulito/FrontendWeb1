@@ -10,10 +10,10 @@
         <span class="rating"><i class="far fa-smile"></i>100%</span>
         <span class="students"><i class="fas fa-user-graduate"></i>999</span>
     </div>
-    <button id="sign-up-course" class="btn-primary" (click)="joinCourse()">Inscribirte</button>
+    <button id="sign-up-course" *ngIf="!hasJoin" class="btn-primary" (click)="joinCourse()">Inscribirte</button>
 </div>
-<div class="subjects">
-    <h2>Lo que aprenderas</h2>
+<div class="subjects" *ngIf="hasJoin || isAdmin">
+    <h2>Temas</h2>
     <ul>
         <li *ngFor="let topic of course.topics"><a routerLink="/topic/{{topic.id}}">{{topic.topicTitle}}</a></li>
     </ul>
@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<div class="comments">
+<!-- <div class="comments">
     <h3>Comentarios</h3>
     <div class="comment">
         <div class="user-wrapper">
@@ -60,4 +60,4 @@
             <span><i class="far fa-smile"></i>100%</span>
         </div>
     </div>
-</div>
+</div> -->

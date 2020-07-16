@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           sessionStorage.setItem('userInSession',data.access_token);
+          const id = this.userService.decode(data.access_token).sub;
+          this.userService.getJoinCourses(id)
+            .subscribe(user => {
+              sessionStorage.setItem('userCourses', JSON.stringify(user.courses));
+            });
         }
       );
   }

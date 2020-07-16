@@ -99,3 +99,17 @@
 ul {
     background-color: greenyellow;
 }
+
+@media(min-width:992px) {
+    .menu {
+        width: 30%;
+    }
+
+    .btn-close-menu {
+        width: 70%;
+    }
+
+    .btn-wrapper {
+        width: 5%;
+    }
+}
