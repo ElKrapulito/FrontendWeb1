@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     
   }
 
-  
+
   isHide:boolean = true;
   toggleHideMenu(){
     this.isHide = !this.isHide;
