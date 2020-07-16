@@ -53,7 +53,6 @@ export class CourseFormComponent implements OnInit {
         courseTitle: ['', Validators.required],
         description: ['', Validators.required],
         level: ['', Validators.required],
-        imgUrl: [Validators.required],
         hourLength: ['', [Validators.pattern('[0-9]+'), Validators.required]],
         categoriesIn: this.fb.group({
           category: ['', Validators.required]
