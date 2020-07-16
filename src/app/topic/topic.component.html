@@ -9,4 +9,6 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
 </div>
-<p>{{topic.content}}</p>
+<div id="content" class="markdown-body">
+</div>
+<button class="btn-secondary" *ngIf="isAdmin" routerLink="/courses/description/{{topic.course.id}}/topic/{{topic.id}}/edit">Editar Tema</button>

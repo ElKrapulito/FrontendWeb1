@@ -18,7 +18,8 @@
         <li *ngFor="let topic of course.topics"><a routerLink="/topic/{{topic.id}}">{{topic.topicTitle}}</a></li>
     </ul>
 </div>
-<app-topic-form *ngIf="isAdmin" [course]="course" (sendTopic)="addNewTopic($event)"></app-topic-form>
+<button *ngIf="isAdmin" class="btn-secondary" routerLink="/courses/description/{{course.id}}/topic/create">Insertar tema</button>
+<!-- <app-topic-form *ngIf="isAdmin" [course]="course" (sendTopic)="addNewTopic($event)"></app-topic-form> -->
 <div class="details">
     <h3>Detalles</h3>
     <div class="detail">

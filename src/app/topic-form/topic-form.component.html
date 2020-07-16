@@ -1,16 +1,32 @@
-<button (click)="isDisplay = !isDisplay" class="btn-secondary">Insertar tema</button>
-<form [formGroup]="topicForm" (ngSubmit)="onSubmit()" *ngIf="isDisplay">
+<!-- <button (click)="isDisplay = !isDisplay" class="btn-secondary">Insertar tema</button> -->
+<form [formGroup]="topicForm" (ngSubmit)="onSubmit()">
+    <!--*ngIf="isDisplay" -->
     <h3>Titulo del tema:</h3>
-    <div class="input-container"><input type="text" class="input" placeholder="Titulo del tema" formControlName="topicTitle"></div>
+    <div class="input-container"><input type="text" class="input" placeholder="Titulo del tema"
+            formControlName="topicTitle"></div>
     <h3>Descripcion del tema:</h3>
-    <div class="input-container"><input type="text" class="input" placeholder="Descripcion" formControlName="description"></div>
+    <div class="input-container"><input type="text" class="input" placeholder="Descripcion"
+            formControlName="description"></div>
     <h3>Tipo de contenido:</h3>
     <div #types formGroupName="types">
-        <div><label for="video"><input type="radio" value="Video" id="video" formControlName="type"/> Video</label></div>
-        <div><label for="text"><input type="radio" value="Text" id="text" formControlName="type"/> Texto</label></div>
+        <div><label for="video"><input type="radio" value="Video" id="Video" formControlName="type" /> Video</label>
+        </div>
+        <div><label for="text"><input type="radio" value="Text" id="Text" formControlName="type" /> Texto</label></div>
     </div>
     <h3>Contenido:</h3>
-    <div class="input-container" *ngIf="topicForm.value.types.type=='Video'"><input type="text" class="input" placeholder="Url de Video" formControlName="content"></div>
-    <div class="input-container" *ngIf="topicForm.value.types.type=='Text'"><textarea class="input" placeholder="Contenido" formControlName="content"></textarea></div>
-    <button type="submit" class="btn-secondary">Crear tema</button>
+    <div class="input-container" *ngIf="topicForm.value.types.type=='Video'">
+        <input type="text" class="input" placeholder="Url de Video" formControlName="content">
+    </div>
+    <div class="input-container" *ngIf="topicForm.value.types.type=='Text'">
+        <div class="markdown-wrapper">
+            <div class="left">
+                <textarea id="txt" #textArea (keyup)="setContent(textArea.value)"
+                    formControlName="content">{{topic.content}}</textarea>
+            </div>
+            <div class="right">
+                <div id="content-preview" class="markdown-body"></div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn-secondary">Guardar tema</button>
 </form>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TopicService } from '../services/topic.service';
 import { Topic } from '../interfaces/topic';
 import { ActivatedRoute } from '@angular/router';
+import * as marked from 'marked';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-topic',
@@ -11,15 +13,24 @@ import { ActivatedRoute } from '@angular/router';
 export class TopicComponent implements OnInit {
 
   topic: Topic;
-
+  displayForm:boolean;
+  isAdmin:boolean;
   constructor(
     private topicService: TopicService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService:UserService
   ) { }
 
   ngOnInit(): void {
+    this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
+    this.displayForm = false;
     this.getTopic();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
+    marked.setOptions({breaks:true});
+  }
+
+  ngAfterViewInit(){
+    this.setContent(this.topic.content);
   }
 
   getTopic() {
@@ -32,4 +43,7 @@ export class TopicComponent implements OnInit {
       )
   }
 
+  setContent(content:string){
+    document.getElementById('content').innerHTML = marked(content);
+  }
 }

@@ -29,4 +29,13 @@ export class TopicService {
       });
   }
 
+  updateTopic(topic:Topic){
+    return this.http.patch<Topic>(`${this.url}/${topic.id}`, {
+      topicTitle: topic.topicTitle,
+      description: topic.description,
+      type: topic.type,
+      content: topic.content,
+    });
+  }
+
 }
