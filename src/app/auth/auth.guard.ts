@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     if(sessionStorage.getItem('userInSession')){
       return true;
     }
-    alert('Tienes que estar registrado para poder continuar.')
+    alert('Tienes que estar ingresar en una cuenta para poder continuar.')
     return false;
   }
   

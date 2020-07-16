@@ -10,7 +10,7 @@
 <div class="categories">
     <h2>Categorias</h2>
     <div class="category" *ngFor="let category of categories">
-        <a routerLink="/courses">
+        <a routerLink="/courses/category/{{category.id}}">
             <img src="assets/img/logo-category.png" alt=""><span>{{ category.categoryName }}</span>
         </a>
     </div>

@@ -1,6 +1,6 @@
-<h2>Cursos de --Categoria aqui--</h2>
+<h2>Cursos de {{category.categoryName}}</h2>
 <h3>Recomendaciones</h3>
-<app-courses-slide></app-courses-slide>
+<app-courses-slide *ngIf="courses" [courses]="courses"></app-courses-slide>
 <h2>Cursos</h2>
-<app-courses-selection></app-courses-selection>
+<app-courses-selection *ngIf="courses" [courses]="courses"></app-courses-selection>
 <app-course-form *ngIf="isAdmin"></app-course-form>

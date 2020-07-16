@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Course } from '../interfaces/course';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -15,12 +15,12 @@ export class CoursesSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCourses();
+    //this.getCourses();
   }
 
   url = `${environment.apiUrl}/course`;
 
-  courses:Course[]
+  @Input() courses:Course[]
   getCourses(){
     this.http.get<Course[]>(this.url)
     .subscribe(
@@ -28,7 +28,6 @@ export class CoursesSelectionComponent implements OnInit {
         this.courses = courses;
       }
     );
-
   }
 
 }

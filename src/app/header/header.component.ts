@@ -27,12 +27,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+  }
+
+  ngDoCheck(){
     if(sessionStorage.getItem('userInSession')){
       this.inSession= true;
     }else {
       this.inSession=false;
     }
-    
   }
 
 

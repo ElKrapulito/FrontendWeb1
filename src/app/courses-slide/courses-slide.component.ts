@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Course } from '../interfaces/course';
 import { CourseService } from '../services/course.service';
 
@@ -14,10 +14,10 @@ export class CoursesSlideComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCourses();
+    //this.getCourses();
   }
 
-  courses:Course[]
+  @Input()courses:Course[]
   getCourses(){
     this.courseService.getCourses()
     .subscribe(
