@@ -13,33 +13,41 @@ import { Topic } from '../interfaces/topic';
 })
 export class CourseDescriptionComponent implements OnInit {
 
-  isAdmin:boolean;
+  isAdmin: boolean;
 
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
-    private userService:UserService
-  ) {}
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.getCourse();
     this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
-  @Input() course:Course;
+  @Input() course: Course;
 
-  getCourse(){
+  getCourse() {
     const courseId = +this.route.snapshot.paramMap.get('id');
     this.courseService.getCourse(courseId)
-    .subscribe(
-        course => 
+      .subscribe(
+        course =>
           this.course = course
       )
   }
 
-  addNewTopic(topic:Topic){
+  addNewTopic(topic: Topic) {
     this.course.topics.push(topic);
+  }
+
+  joinCourse() {
+    const userId = this.userService.decode(sessionStorage.getItem('userInSession')).sub;
+    this.userService.joinToCourse(userId, this.course)
+      .subscribe(result => {
+        console.log(result);
+      });
   }
 
 }

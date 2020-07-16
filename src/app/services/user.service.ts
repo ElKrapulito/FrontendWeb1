@@ -6,6 +6,7 @@ import { User } from '../interfaces/user';
 import { tap, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Course } from '../interfaces/course';
 
 @Injectable({
   providedIn: 'root'
@@ -27,23 +28,27 @@ export class UserService {
     })
   };
 
-  logIn(user){
-    return this.http.post<any>(this.urlLogin,user)
+  logIn(user) {
+    return this.http.post<any>(this.urlLogin, user)
       .pipe(
-        tap(()=> {this.router.navigate(['/home'])}),
+        tap(() => { this.router.navigate(['/home']) }),
         catchError(this.handleError<any>('LogIn'))
       );
   }
 
-  decode(token:string){
+  decode(token: string) {
     const result = jwt_decode(token);
     return result;
   }
 
-  registerUser(user:User){
-    return this.http.post<any>(this.url,user, this.httpOptions).pipe(
+  registerUser(user: User) {
+    return this.http.post<any>(this.url, user, this.httpOptions).pipe(
       tap((user: User) => console.log(`added user w/ id=${user.id}`))
     );
+  }
+
+  joinToCourse(user: number, course: Course) {
+    return this.http.post<any>(`${this.url}/course`, { userId: user, courseId: course.id });
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -53,4 +58,5 @@ export class UserService {
       return of(result as T);
     };
   }
+
 }
