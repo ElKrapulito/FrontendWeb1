@@ -10,8 +10,9 @@ import { CourseService } from '../services/course.service';
 })
 export class MyCoursesComponent implements OnInit {
 
-  @Input()
   courses: Course[];
+  adminCourses: Course[];
+  isAdmin: boolean
 
   constructor(
     private userService: UserService,
@@ -19,6 +20,11 @@ export class MyCoursesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.courses = JSON.parse(sessionStorage.getItem('userCourses')) as Course[];
+    this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
+    if(this.isAdmin){
+      this.adminCourses = JSON.parse(sessionStorage.getItem('adminCourses')) as Course[]
+    }
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private courseService: CourseService
   ) { }
 
   ngOnInit(): void {
@@ -20,11 +22,16 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           sessionStorage.setItem('userInSession',data.access_token);
-          const id = this.userService.decode(data.access_token).sub;
+          const user = this.userService.decode(data.access_token);
+          const id = user.sub;
+          const isAdmin = user.isAdmin;
           this.userService.getJoinCourses(id)
             .subscribe(user => {
               sessionStorage.setItem('userCourses', JSON.stringify(user.courses));
             });
+          if(isAdmin){
+            this.courseService.getCoursesByAdminId(id).subscribe( courses => sessionStorage.setItem('adminCourses', JSON.stringify(courses)))
+          }
         }
       );
   }

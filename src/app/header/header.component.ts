@@ -14,10 +14,12 @@ import { UserService } from '../services/user.service';
 export class HeaderComponent implements OnInit {
 
   inSession:boolean
+  userId:number
 
   constructor(
     private courseService: CourseService,
     private router: Router,
+    private userService: UserService
   ) { 
     this.courses$ = this.searchTerms.pipe(
       debounceTime(300),
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
   ngDoCheck(){
     if(sessionStorage.getItem('userInSession')){
       this.inSession= true;
+      this.userId = this.userService.decode(sessionStorage.getItem('userInSession')).sub
     }else {
       this.inSession=false;
     }
@@ -56,7 +59,9 @@ export class HeaderComponent implements OnInit {
   private searchTerms = new Subject<string>();
 
   search(term: string) {
-    this.searchTerms.next(term);
+    if(term.trim()){
+      this.searchTerms.next(term);
+    }
   }
 
   logOut(){

@@ -18,7 +18,7 @@
     <button id="btn-search" class="btn-wrapper" (click)="toggleHideInput()"><i class="fas fa-search"></i></button>
     <div class="menu-mobile" [class.hide]="isHide">
         <div class="menu">
-            <button class="btn-primary" *ngIf="inSession" (click)="toggleHideMenu()" routerLink="">Cursos</button>
+            <button class="btn-primary" *ngIf="inSession" (click)="toggleHideMenu()" routerLink="/myCourses/userId">Cursos</button>
             <button class="btn-secondary" *ngIf="!inSession" (click)="toggleHideMenu()" routerLink="/login"><a>Ingresar</a></button>
             <button class="btn-secondary" *ngIf="!inSession" (click)="toggleHideMenu()" routerLink="/register"><a>Registrarse</a></button>
             <button class="btn-secondary" *ngIf="inSession" (click)="logOut()">Salir</button>

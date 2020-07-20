@@ -1,2 +1,6 @@
 <h1>Mis cursos</h1>
-<app-course-selection *ngIf="courses" [courses]="courses"></app-course-selection>
+<app-courses-selection *ngIf="courses" [courses]="courses"></app-courses-selection>
+<div *ngIf="isAdmin">
+    <h1>Administrar cursos</h1>
+    <app-courses-selection [courses]="adminCourses"></app-courses-selection>
+</div>

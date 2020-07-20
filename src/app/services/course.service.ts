@@ -27,6 +27,10 @@ export class CourseService {
     return this.http.get<Course>(`${this.url}/${courseId}`);
   }
 
+  getCoursesByAdminId(id:number){
+    return this.http.get<Course>(`${this.url}/user/${id}`);
+  }
+
   searchCourses(term: string) {
     return this.http.get<Course[]>(`${this.url}/search/${term}`);
   }

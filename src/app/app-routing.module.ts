@@ -13,6 +13,7 @@ import { DataResolveService } from './services/data-resolve.service';
 import { CourseResolverService } from './services/course-resolver.service';
 import { OneCourseResolverService } from './services/one-course-resolver.service';
 import { TopicResolverService } from './services/topic-resolver.service';
+import { MyCoursesComponent } from './my-courses/my-courses.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'courses/description/:id/topic/create',component:TopicFormComponent,canActivate:[AuthGuard]},
   {path:'courses/description/:id/topic/:tid/edit',component:TopicFormComponent,canActivate:[AuthGuard], resolve:{topic: DataResolveService}},
   {path:'topic/:id',component:TopicComponent,canActivate:[AuthGuard],resolve:{myTopic: TopicResolverService}},
+  {path:'myCourses/:id',component:MyCoursesComponent,canActivate:[AuthGuard]},
   {path:'', redirectTo:'home', pathMatch:'full'}
 ];
 
