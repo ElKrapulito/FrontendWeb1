@@ -1,7 +1,40 @@
-.imageWrapper{
+.imageWrapper {
     width: 300px;
+    margin: 0 auto;
 }
 
 #uploadImage {
-    width : 100%;
+    width: 100%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+.categories{
+    width: max-content;
+    margin: 0 auto;
+}
+
+label{
+    font-size: 32px;
+}
+
+label:hover{
+    text-decoration: underline;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+input[type="radio"] + label {
+    color: #ccc;
+    font-style: italic;
+} 
+
+input[type="radio"]:checked + label {
+    color: rgb(196, 255, 252);
+    font-style: normal;
 }

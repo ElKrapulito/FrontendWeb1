@@ -119,6 +119,12 @@ export class TopicFormComponent implements OnInit {
     this.location.back();
   }
 
+  isFieldValid(field: string) {
+    if(!this.topicForm.get(field)){
+      return false;
+    }
+    return !this.topicForm.get(field).valid && this.topicForm.get(field).touched;
+  }
 
 
 }

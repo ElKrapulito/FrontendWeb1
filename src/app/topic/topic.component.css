@@ -1,4 +1,21 @@
 #content{
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color:whitesmoke;
     color: black;
+}
+
+.video{
+    width: 100%;
+    margin: 0 auto;
+}
+
+iframe{
+    width: 100%;
+}
+
+@media(min-width:992px){
+    .video{
+        width: 50%;
+        margin: 0 auto;
+    }
+
 }

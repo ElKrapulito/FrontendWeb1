@@ -4,30 +4,43 @@
     <h3>Titulo del tema:</h3>
     <div class="input-container"><input type="text" class="input" placeholder="Titulo del tema"
             formControlName="topicTitle"></div>
+    <span class="warning" *ngIf="isFieldValid('topicTitle')">Ingresar un titulo!</span>
+
     <h3>Descripcion del tema:</h3>
     <div class="input-container"><input type="text" class="input" placeholder="Descripcion"
             formControlName="description"></div>
+    <span class="warning" *ngIf="isFieldValid('description')">Ingresar una descripcion del tema!</span>
+    
     <h3>Tipo de contenido:</h3>
     <div #types formGroupName="types">
         <div><label for="video"><input type="radio" value="Video" id="Video" formControlName="type" /> Video</label>
         </div>
         <div><label for="text"><input type="radio" value="Text" id="Text" formControlName="type" /> Texto</label></div>
     </div>
+    <span class="warning" *ngIf="isFieldValid('type')">Se debe seleccionar el tipo del contenido</span>
+    
     <h3>Contenido:</h3>
-    <div class="input-container" *ngIf="topicForm.value.types.type=='Video'">
-        <input type="text" class="input" placeholder="Url de Video" formControlName="content">
+    <div *ngIf="topicForm.value.types.type=='Video'">
+        <div class="input-container">
+            <input type="text" class="input" placeholder="Url de Video" formControlName="content">
+        </div>
+        <span class="warning" *ngIf="isFieldValid('content')">Ingresar el id del video!</span>
     </div>
-    <div class="input-container" *ngIf="topicForm.value.types.type=='Text'">
-        <div class="markdown-wrapper">
-            <div class="left">
-                <textarea id="txt" #textArea (keyup)="setContent(textArea.value)"
-                    formControlName="content">{{topic.content}}</textarea>
-            </div>
-            <div class="right">
-                <div id="content-preview" class="markdown-body"></div>
+
+    <div *ngIf="topicForm.value.types.type=='Text'">
+        <div class="input-container" >
+            <div class="markdown-wrapper">
+                <div class="left">
+                    <textarea id="txt" #textArea (keyup)="setContent(textArea.value)"
+                        formControlName="content">{{topic.content}}</textarea>
+                </div>
+                <div class="right">
+                    <div id="content-preview" class="markdown-body"></div>
+                </div>
             </div>
         </div>
+        <span class="warning" *ngIf="isFieldValid('content')">Ingresar contenido al tema!</span>
     </div>
-    <button type="submit" class="btn-secondary" [disabled]="!topicForm.valid">Guardar tema</button>
+    <button type="submit" class="btn-primary" [disabled]="!topicForm.valid">Guardar tema</button>
 </form>
 <button (click)="goBack()" class="btn-secondary">Cancelar</button>

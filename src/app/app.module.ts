@@ -16,6 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { TopicComponent } from './topic/topic.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
+import { MyCoursesComponent } from './my-courses/my-courses.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TopicFormComponent } from './topic-form/topic-form.component';
     CourseFormComponent,
     TopicComponent,
     TopicFormComponent,
+    MyCoursesComponent,
   ],
   imports: [
     BrowserModule,

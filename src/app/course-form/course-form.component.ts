@@ -39,11 +39,10 @@ export class CourseFormComponent implements OnInit {
         courseTitle: [this.course.courseTitle],
         description: [this.course.description],
         level: [this.course.level],
-        imgUrl: [],
         hourLength: [this.course.hourLength, Validators.pattern('[0-9]+')],
         categoriesIn: this.fb.group({
           category: [this.course.category.id.toString()]
-        })
+        }, Validators.required)
       });
       /*let image = <HTMLImageElement>document.getElementById('uploadImage') as HTMLImageElement;
       console.log(this.course.url);
@@ -73,6 +72,11 @@ export class CourseFormComponent implements OnInit {
 
   newCourse: Course
   onSubmit() {
+    if(!this.courseForm.valid){
+      alert('Llenar los campos requeridos!');
+      return;
+    }
+
     if (this.course) {
       const values = this.courseForm.value;
 
@@ -115,7 +119,9 @@ export class CourseFormComponent implements OnInit {
         .subscribe(
           course => {
             const input = document.getElementById('imageInput') as HTMLInputElement
-            this.uploadImageFile(input, course)
+            if (input.files.length > 0) {
+              this.uploadImageFile(input, course)
+            }
             console.log(course);
             this.courseForm.reset();
             this.isEdit = false;
@@ -124,16 +130,6 @@ export class CourseFormComponent implements OnInit {
         );
     }
   }
-
-  /* uploadFile(event: EventTarget, course:Course) {
-      const eventObj: MSInputMethodContext = event as MSInputMethodContext;
-      const target: HTMLInputElement = eventObj.target as HTMLInputElement;
-      const file: File = target.files[0];
-      this.courseService.uploadImageFile(file, course).subscribe((newImage) => {
-        //this.images.push(newImage);
-        console.log(newImage);
-      });
-    }*/
 
   async uploadImageFile(input: HTMLInputElement, course: Course) {
     const file: File = input.files[0];
@@ -153,6 +149,13 @@ export class CourseFormComponent implements OnInit {
 
       reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
+  }
+
+  isFieldValid(field: string) {
+    if(!this.courseForm.get(field)){
+      return false;
+    }
+    return !this.courseForm.get(field).valid && this.courseForm.get(field).touched;
   }
 
 }

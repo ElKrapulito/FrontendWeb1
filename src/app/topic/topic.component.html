@@ -1,14 +1,14 @@
 <h3>{{topic.topicTitle}}</h3>
 <p>{{topic.description}}</p>
 
-<div *ngIf="topic.type=='Video'">
-    <iframe width="560" 
+<div class="video" *ngIf="topic.type=='Video'">
+    <iframe id="videoCourse" width="560" 
         height="315" 
-        src="https://www.youtube.com/embed/2CE3yZKO_QA" 
+        src="#" 
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
 </div>
-<div id="content" class="markdown-body">
+<div id="content" class="markdown-body" *ngIf="topic.type == 'Text'">
 </div>
 <button class="btn-secondary" *ngIf="isAdmin" routerLink="/courses/description/{{topic.course.id}}/topic/{{topic.id}}/edit">Editar Tema</button>

@@ -101,6 +101,20 @@ input, textarea{
 }
 
 
+input[type="text"].ng-valid {
+    border-bottom: 1px solid #42A948;
+}
+
+
+input[type="text"].ng-dirty.ng-invalid:not(form) {
+    border-bottom: 1px solid #a94442;
+}
+
+.warning {
+    color    : red;
+    font-size: 12px;
+}
+
 /*Clases de proposito general*/
 .hide {
     position: absolute !important;

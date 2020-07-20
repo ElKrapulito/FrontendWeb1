@@ -24,20 +24,12 @@ export class CourseDescriptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getCourse();
     this.course = this.route.snapshot.data.course;
     this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
     this.compareCourse();
     window.scrollTo(0, 0);
   }
-  /*getCourse() {
-    const courseId = +this.route.snapshot.paramMap.get('id');
-    this.courseService.getCourse(courseId)
-      .subscribe(
-        course =>
-          this.course = course
-      )
-  }*/
+
 
   addNewTopic(topic: Topic) {
     this.course.topics.push(topic);
