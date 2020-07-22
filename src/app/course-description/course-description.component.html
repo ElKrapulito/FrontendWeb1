@@ -1,4 +1,4 @@
-<div *ngIf="isAdmin">
+<div *ngIf="isAdmin && myCourse">
     <app-course-form [course]="course"></app-course-form>
 </div>
 <div class="course">
@@ -10,7 +10,7 @@
         <span class="rating"><i class="far fa-smile"></i>100%</span>
         <span class="students"><i class="fas fa-user-graduate"></i>999</span>
     </div>
-    <button id="sign-up-course" *ngIf="!hasJoin" class="btn-primary" (click)="joinCourse()">Inscribirte</button>
+    <button id="sign-up-course" *ngIf="!hasJoin && !myCourse" class="btn-primary" (click)="joinCourse()">Inscribirte</button>
 </div>
 <div class="subjects" *ngIf="hasJoin || isAdmin">
     <h2>Temas</h2>
@@ -18,7 +18,7 @@
         <li *ngFor="let topic of course.topics"><a routerLink="/topic/{{topic.id}}">{{topic.topicTitle}}</a></li>
     </ul>
 </div>
-<button *ngIf="isAdmin" class="btn-secondary" routerLink="/courses/description/{{course.id}}/topic/create">Insertar tema</button>
+<button *ngIf="isAdmin && myCourse" class="btn-secondary" routerLink="/courses/description/{{course.id}}/topic/create">Insertar tema</button>
 <!-- <app-topic-form *ngIf="isAdmin" [course]="course" (sendTopic)="addNewTopic($event)"></app-topic-form> -->
 <div class="details">
     <h3>Detalles</h3>

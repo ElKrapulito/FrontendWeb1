@@ -38,4 +38,8 @@ export class TopicService {
     });
   }
 
+  deleteTopic(id:number){
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
 }

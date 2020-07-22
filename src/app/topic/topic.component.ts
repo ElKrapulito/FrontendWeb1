@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as marked from 'marked';
 import { UserService } from '../services/user.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Course } from '../interfaces/course';
 
 @Component({
   selector: 'app-topic',
@@ -61,4 +62,5 @@ export class TopicComponent implements OnInit {
   setContent(content:string){
     document.getElementById('content').innerHTML = marked(content);
   }
+
 }

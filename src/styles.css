@@ -134,5 +134,11 @@ input[type="text"].ng-dirty.ng-invalid:not(form) {
     .container {
         width : 65%;
         margin: 0 auto;
+        background-color: rgb(0, 147, 167);
+        padding: 30px;
+    }
+
+    .intro {
+        padding: 20px;
     }
 }

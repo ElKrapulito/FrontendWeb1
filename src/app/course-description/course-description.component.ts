@@ -16,6 +16,7 @@ export class CourseDescriptionComponent implements OnInit {
   isAdmin: boolean;
   hasJoin:boolean;
   course: Course;
+  myCourse:boolean
 
   constructor(
     private courseService: CourseService,
@@ -27,6 +28,9 @@ export class CourseDescriptionComponent implements OnInit {
     this.course = this.route.snapshot.data.course;
     this.isAdmin = this.userService.decode(sessionStorage.getItem('userInSession')).isAdmin;
     this.compareCourse();
+    if(this.isAdmin){
+      this.compareAdminCourse();
+    }
     window.scrollTo(0, 0);
   }
 
@@ -53,6 +57,15 @@ export class CourseDescriptionComponent implements OnInit {
       this.hasJoin = true;
     } else {
       this.hasJoin = false;
+    }
+  }
+
+  compareAdminCourse(){
+    const courses = JSON.parse(sessionStorage.getItem('adminCourses')) as Course[];
+    if(courses.find(course => course.id == this.course.id)){
+      this.myCourse = true;
+    } else {
+      this.myCourse = false;
     }
   }
 

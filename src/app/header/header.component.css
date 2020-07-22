@@ -67,14 +67,11 @@
     position        : absolute;
     left            : 0%;
     top             : 10%;
-    border-bottom   : 1px solid gray;
-    border-left     : 1px solid gray;
-    border-right    : 1px solid gray;
     width           : 195px;
     height          : 16px;
-    padding         : 5px;
-    background-color: white;
+    padding         : 0;
     cursor          : pointer;
+    background-color: transparent;
     list-style-type : none;
 }
 
@@ -83,22 +80,20 @@
 }
 
 .search-result li a {
-    color          : #888;
+    color          : rgb(156, 156, 156);
     display        : block;
     text-decoration: none;
+    background-color: white;
 }
 
 .search-result li a:hover {
-    color: white;
+    color: rgb(186, 248, 250);
 }
 
 .search-result li a:active {
     color: white;
 }
 
-ul {
-    background-color: greenyellow;
-}
 
 @media(min-width:992px) {
     .menu {

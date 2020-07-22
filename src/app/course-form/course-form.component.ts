@@ -5,7 +5,6 @@ import { CourseService } from '../services/course.service';
 import { UserService } from '../services/user.service';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../interfaces/category';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-form',
@@ -126,6 +125,9 @@ export class CourseFormComponent implements OnInit {
             this.courseForm.reset();
             this.isEdit = false;
             this.sendCourse.emit(this.course);
+            const courses = JSON.parse(sessionStorage.getItem('adminCourses')) as Course[];
+            courses.push(course);
+            sessionStorage.setItem('adminCourses',JSON.stringify(courses));
           }
         );
     }

@@ -44,3 +44,4 @@
     <button type="submit" class="btn-primary" [disabled]="!topicForm.valid">Guardar tema</button>
 </form>
 <button (click)="goBack()" class="btn-secondary">Cancelar</button>
+<button (click)="deleteTopic(topic.id)" class="btn-secondary" *ngIf="topic">Eliminar</button>

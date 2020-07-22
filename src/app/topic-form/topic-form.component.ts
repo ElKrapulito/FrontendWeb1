@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Course } from '../interfaces/course';
 import { TopicService } from '../services/topic.service';
 import { Topic } from '../interfaces/topic';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import * as marked from 'marked';
 import { Location } from '@angular/common';
@@ -26,7 +26,8 @@ export class TopicFormComponent implements OnInit {
     private topicService: TopicService,
     private route: ActivatedRoute,
     private courseService: CourseService,
-    private location:Location
+    private location:Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -124,6 +125,12 @@ export class TopicFormComponent implements OnInit {
       return false;
     }
     return !this.topicForm.get(field).valid && this.topicForm.get(field).touched;
+  }
+
+  deleteTopic(id:number){
+    this.topicService.deleteTopic(id).subscribe(() => 
+      this.router.navigate([`/courses/category/${this.course.category.id}`])
+    );
   }
 
 
