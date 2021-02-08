@@ -21,7 +21,7 @@
     "@angular/router": "~9.1.9",
     "github-markdown-css": "^4.0.0",
     "jwt-decode": "^2.2.0",
-    "marked": "^1.1.1",
+    "marked": "^2.0.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
